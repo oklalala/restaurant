@@ -7,4 +7,7 @@ Description:<%= @restaurant.description %><br>
 
 <br>
 
+<%= image_tag @restaurant.image, width: '300px' if @restaurant.image? %>
+
+
 <%= link_to 'Back to index', admin_restaurants_path %>
