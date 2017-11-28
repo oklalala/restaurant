@@ -3,16 +3,20 @@ class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_admin
   
   def index
-    @restaurants = Restaurants.all
+    @restaurants = Restaurant.all
+  end
+
+  def new
+    @restaurant = Restaurant.new
   end
 
   def create
-    @restaurants = Restaurants.new(restaurants_params)
-    if @restaurants.save
-      flash[:notice] = "restaurants was successfully created"
-      redirect_to admin_restaurant_path
+    @restaurant = Restaurant.new(restaurant_params)
+    if @restaurant.save
+      flash[:notice] = "restaurant was successfully created"
+      redirect_to admin_restaurants_path
     else
-      flash.now[:alart] = "restaurants was failed to create"
+      flash.now[:alart] = "restaurant was failed to create"
       render :new
     end
   end
@@ -20,6 +24,6 @@ class Admin::RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurants).permit(:name, :tel_no, :address, :opening_hours, :description)
+    params.require(:restaurant).permit(:name, :tel_no, :address, :opening_hours, :description)
   end
 end
