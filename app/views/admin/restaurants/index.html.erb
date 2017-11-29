@@ -24,9 +24,10 @@
             <th scope="row"><%= restaurant.id %></th>
             <td><%= restaurant.name %></td>
             <td>
-              <%= link_to 'Show', admin_restaurant_path(restaurant) %>
-              <%= link_to 'Edit', edit_admin_restaurant_path(restaurant) %>
-              <%= link_to 'Delete', admin_restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?"} %>
+              <span><%= link_to '   ', admin_restaurant_path(restaurant), class: "glyphicon glyphicon-folder-open" %></span>  | 
+              <span><%= link_to '', edit_admin_restaurant_path(restaurant),class: "glyphicon glyphicon-wrench" %></span>   |
+              <span><%= link_to '   ', admin_restaurant_path(restaurant), method: :delete, data: { confirm: "Are you sure?"}, class: "glyphicon glyphicon-trash" %></span>
+
             </td>
           </tr>
           <% end %>
